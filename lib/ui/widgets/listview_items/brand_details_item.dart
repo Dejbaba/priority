@@ -1,9 +1,11 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:priority_test/core/constants/color_path.dart';
 import 'package:priority_test/core/view_models/filter_view_model.dart';
+import 'package:priority_test/core/view_models/product_view_model.dart';
 
 class BrandDetailsItem extends StatelessWidget {
   final String brandLogo;
@@ -78,14 +80,19 @@ class BrandDetailsItem extends StatelessWidget {
             SizedBox(
               height: 3.h,
             ),
-            Text(
-              '1001 Items',
-              style: GoogleFonts.urbanist(
-                  color: ColorPath.nobelGrey,
-                  fontSize: 11.sp,
-                  fontWeight: FontWeight.w400),
-            ),
-          ],
+            Consumer(
+              builder: (context, ref, child){
+                final _productVm = ref.watch(productVm);
+                final _count = _productVm.itemCount(brandName: brandName);
+                return Text(
+                  '$_count ${_count > 1 ? 'Items':'Item'}',
+                  style: GoogleFonts.urbanist(
+                      color: ColorPath.nobelGrey,
+                      fontSize: 11.sp,
+                      fontWeight: FontWeight.w400),
+                );
+                }
+            ) ],
         ),
       ),
     );
