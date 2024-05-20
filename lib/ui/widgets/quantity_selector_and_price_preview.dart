@@ -14,9 +14,7 @@ import 'package:priority_test/ui/widgets/dock.dart';
 import 'package:priority_test/ui/widgets/floating_flush_bar.dart';
 
 class QuantitySelectorAndPricePreview extends StatelessWidget {
-
   final ValueChanged<bool> onChanged;
-
 
   const QuantitySelectorAndPricePreview({super.key, required this.onChanged});
 
@@ -83,7 +81,8 @@ class QuantitySelectorAndPricePreview extends StatelessWidget {
                         width: 20.w,
                       ),
                       GestureDetector(
-                        onTap: _productDetailsVm.selectedQuantity >= _productDetailsVm.availableQuantity
+                        onTap: _productDetailsVm.selectedQuantity >=
+                                _productDetailsVm.availableQuantity
                             ? null
                             : () {
                                 _productDetailsVm.incrementQuantity();
@@ -93,7 +92,8 @@ class QuantitySelectorAndPricePreview extends StatelessWidget {
                           width: 24.w,
                           height: 24.h,
                           colorFilter: ColorFilter.mode(
-                            _productDetailsVm.selectedQuantity >= _productDetailsVm.availableQuantity
+                            _productDetailsVm.selectedQuantity >=
+                                    _productDetailsVm.availableQuantity
                                 ? ColorPath.nobelGrey
                                 : ColorPath.codGrey,
                             BlendMode.srcIn,
@@ -109,9 +109,24 @@ class QuantitySelectorAndPricePreview extends StatelessWidget {
           ),
           Dock(
             useBoxShadow: false,
-            amount: double.tryParse(_productDetailsVm.selectedProduct.price.toString())! * _productDetailsVm.selectedQuantity,
+            amount: double.tryParse(
+                    _productDetailsVm.selectedProduct.price.toString())! *
+                _productDetailsVm.selectedQuantity,
             buttonText: 'ADD TO CART',
-            onPressed: () async{
+            onPressed: () async {
+              if (_productDetailsVm.selectedQuantity >
+                  _productDetailsVm.selectedProduct.quantity!) {
+                ///prompt user to select a quantity less than or equal to the available quantity
+                ///display error message
+                showFloatingFlushBar(
+                  context: context,
+                  message:
+                      'Quantity Value Exceed. ${_productDetailsVm.selectedProduct.quantity == 1 ? 'There is only 1 quantity of this product available' : 'There are ${_productDetailsVm.selectedProduct.quantity} quantities of this product available'}',
+                  duration: 2,
+                  messageColor: Colors.white,
+                );
+                return;
+              }
               popNavigation(context: context);
               onChanged(true);
               // await _cartVm.addToCart(
