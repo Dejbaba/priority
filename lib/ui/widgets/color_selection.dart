@@ -33,7 +33,7 @@ class ColorSelection extends StatelessWidget {
         colorFilter: ColorFilter.mode(
           index == 1?ColorPath.codGrey:Colors.white,  // Replace with your desired color
           BlendMode.srcIn,
-        ), //Todo: refactor deprecated property
+        ),
       ),
       ):Container()),
     );
