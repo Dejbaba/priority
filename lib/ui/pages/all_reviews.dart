@@ -9,7 +9,6 @@ import 'package:priority_test/core/view_models/product_details_view_model.dart';
 import 'package:priority_test/core/view_models/reviews_view_model.dart';
 import 'package:priority_test/ui/widgets/custom_appbar.dart';
 import 'package:priority_test/ui/widgets/empty_state.dart';
-import 'package:priority_test/ui/widgets/leading_icon.dart';
 import 'package:priority_test/ui/widgets/listview_items/review_item.dart';
 
 class AllReviews extends StatelessWidget {

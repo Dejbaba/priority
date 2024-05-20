@@ -12,8 +12,6 @@ class FilterViewModel extends ChangeNotifier{
   RangeValues get currentRangeValues => _currentRangeValues;
   set currentRangeValues(RangeValues val){
     _currentRangeValues = val;
-    print("start:${_currentRangeValues.start.toInt()}");
-    print("end:${_currentRangeValues.end.toInt()}");
     notifyListeners();
   }
 

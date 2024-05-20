@@ -3,7 +3,6 @@ import 'package:flutter/scheduler.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:priority_test/core/enums/view_state.dart';
-import 'package:priority_test/core/models/product.dart';
 import 'package:priority_test/core/view_models/wishlist_view_model.dart';
 import 'package:priority_test/ui/widgets/busy_overlay.dart';
 import 'package:priority_test/ui/widgets/custom_appbar.dart';

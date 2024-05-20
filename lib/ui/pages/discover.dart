@@ -1,6 +1,3 @@
-import 'package:animate_do/animate_do.dart';
-import 'package:cloud_firestore/cloud_firestore.dart';
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/scheduler.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
@@ -17,7 +14,6 @@ import 'package:priority_test/core/view_models/order_view_model.dart';
 import 'package:priority_test/core/view_models/product_view_model.dart';
 import 'package:priority_test/core/view_models/wishlist_view_model.dart';
 import 'package:priority_test/ui/pages/filter_screen.dart';
-import 'package:priority_test/ui/pages/orders.dart';
 import 'package:priority_test/ui/widgets/busy_overlay.dart';
 import 'package:priority_test/ui/widgets/cart_icon.dart';
 import 'package:priority_test/ui/widgets/empty_state.dart';
@@ -76,7 +72,6 @@ class _DiscoverState extends ConsumerState<Discover> {
     final _filterVm = ref.read(filterVm);
     if (_scrollController.position.pixels ==
         _scrollController.position.maxScrollExtent) {
-      print('end of scroll>>>>>');
       if (_productVm.state != ViewState.Busy &&
           _productVm.hasMoreData == true &&
           _filterVm.selectedSneakerBrand.toLowerCase() == 'all')
@@ -86,156 +81,6 @@ class _DiscoverState extends ConsumerState<Discover> {
 
   @override
   Widget build(BuildContext context) {
-    // final _productVm = ref.watch(productVm);
-    // final _filterVm = ref.watch(filterVm);
-    // return Scaffold(
-    //   body: SafeArea(
-    //     bottom: false,
-    //     child: StreamBuilder<QuerySnapshot>(
-    //       stream: ProductService.query.snapshots(),
-    //       builder: (context, snapshot){
-    //         if(snapshot.connectionState == ConnectionState.waiting){
-    //           return Center(
-    //             child: CircularProgressIndicator(),
-    //           );
-    //         }else if(snapshot.hasError){
-    //           return Center(
-    //             child: Text('An Error Occurred'),
-    //           );
-    //         }else{
-    //           _productVm.lastDocument = snapshot.data!.docs.last;
-    //           _productVm.allProducts = snapshot.data!.docs.map((doc) => Product.fromMap(doc.data() as Map<String, dynamic>)).toList();
-    //           return Stack(
-    //             children: [
-    //               Column(
-    //                 crossAxisAlignment: CrossAxisAlignment.start,
-    //                 children: [
-    //                   ///title and cart icon
-    //                   Padding(
-    //                     padding:EdgeInsets.only(left: 30.w, right: 30.w, top: 30.h),
-    //                     child: Row(
-    //                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
-    //                       children: [
-    //                         Text(
-    //                           'Discover',
-    //                           style: GoogleFonts.urbanist(
-    //                               color: ColorPath.codGrey,
-    //                               fontSize: 30.sp,
-    //                               fontWeight: FontWeight.w700
-    //                           ),
-    //                         ),
-    //                         CartIcon()
-    //                       ],
-    //                     ),
-    //                   ),
-    //                   SizedBox(height: 24.h,),
-    //                   ///sneakers filter(by brand) options
-    //                   Container(
-    //                       height: 30.h,
-    //                       child: ListView.separated(
-    //                         padding: EdgeInsets.only(left: 30.w),
-    //                         itemCount: _filterVm.sneakerBrands.length,
-    //                         scrollDirection: Axis.horizontal,
-    //                         shrinkWrap: true,
-    //                         itemBuilder: (BuildContext context, int index) {
-    //                           final _sneakerBrand = _filterVm.sneakerBrands[index];
-    //                           return BrandNameItem(sneakerBrand: _sneakerBrand, filterVm: _filterVm, productVm: _productVm,);
-    //                         },
-    //                         separatorBuilder: (context, index) {
-    //                           return SizedBox(width: 20.w,);
-    //                         },
-    //                       )
-    //                   ),
-    //                   SizedBox(height: 30.h,),
-    //
-    //                   if(_productVm.filterableProducts.isNotEmpty)
-    //                   ///product list
-    //                   Expanded(
-    //                       child: Column(
-    //                         children: [
-    //                           Expanded(
-    //                             child: ListView(
-    //                               controller: _scrollController,
-    //                                 children: [
-    //                                   GridView.builder(
-    //                                       padding: EdgeInsets.symmetric(horizontal: 30.w),
-    //                                       physics: NeverScrollableScrollPhysics(),
-    //                                       shrinkWrap: true,
-    //                                       scrollDirection: Axis.vertical,
-    //                                       itemCount: _productVm.allProducts.length,
-    //                                       gridDelegate: new SliverGridDelegateWithFixedCrossAxisCount(
-    //                                         crossAxisCount: 2,
-    //                                         mainAxisSpacing: 32.h,
-    //                                         crossAxisSpacing: 16.w,
-    //                                         mainAxisExtent: 250.h,
-    //                                       ),
-    //                                       itemBuilder: (BuildContext context, int index) {
-    //
-    //                                         return ProductItem(
-    //                                           product: _productVm.allProducts[index],
-    //                                         );
-    //                                       })
-    //                                 ]
-    //
-    //                             ),
-    //                           ),
-    //                           if(_productVm.productState == ViewState.Busy)
-    //                           Center(
-    //                             child: SizedBox(
-    //                               height: 20.h,
-    //                                 width: 20.w,
-    //                                 child: CircularProgressIndicator()),
-    //                           )
-    //                         ],
-    //                       ))
-    //                   else Text('No Product Found'),
-    //                 ],
-    //               ),
-    //               if(_productVm.filterableProducts.isNotEmpty)
-    //               ///filter button
-    //               Align(
-    //                 alignment: Alignment.bottomCenter,
-    //                 child: Container(
-    //                   margin: EdgeInsets.only(bottom: 30.h),
-    //                   padding: EdgeInsets.symmetric(horizontal: 20.w, vertical: 10.h),
-    //                   decoration: BoxDecoration(
-    //                       color: ColorPath.codGrey,
-    //                       borderRadius: BorderRadius.all(Radius.circular(100.r))
-    //                   ),
-    //                   child: GestureDetector(
-    //                     onTap: (){
-    //                       ///nav user to filter screen
-    //                       pushNavigation(context: context, widget: FilterScreen());
-    //                     },
-    //                     child: Row(
-    //                       mainAxisSize: MainAxisSize.min,
-    //                       children: [
-    //                         SvgPicture.asset(
-    //                           "assets/icons/filter.svg",
-    //                           width: 20.w,
-    //                           height: 20.h,
-    //                         ),
-    //                         SizedBox(width: 10.w,),
-    //                         Text(
-    //                           'FILTER',
-    //                           style: GoogleFonts.urbanist(
-    //                               color: Colors.white,
-    //                               fontSize: 14.sp,
-    //                               fontWeight: FontWeight.w700
-    //                           ),
-    //                         ),
-    //                       ],
-    //                     ),
-    //                   ),
-    //                 ),
-    //               )
-    //             ],
-    //           );
-    //         }
-    //       },
-    //     )
-    //   ),
-    // );
 
     return BusyOverlay(
       show: ref.watch(wishlistVm).wishlistActionState == ViewState.Busy,
@@ -365,7 +210,6 @@ class _DiscoverState extends ConsumerState<Discover> {
             ),
         
             if (_productVm.filterableProducts.isNotEmpty)
-        
             ///product list
               Expanded(
                   child: Column(
@@ -373,7 +217,7 @@ class _DiscoverState extends ConsumerState<Discover> {
                       Expanded(
                         child: ListView(controller: _scrollController, children: [
                           GridView.builder(
-                              padding: EdgeInsets.symmetric(horizontal: 30.w),
+                              padding: EdgeInsets.only(left: 30.w, right: 30.w, bottom: 30.h),
                               physics: NeverScrollableScrollPhysics(),
                               shrinkWrap: true,
                               scrollDirection: Axis.vertical,
@@ -451,6 +295,7 @@ class _DiscoverState extends ConsumerState<Discover> {
     }
 
     if (_productVm.state == ViewState.Error) {
+      ///error state
       return Expanded(
         child: Center(
             child: ErrorState(

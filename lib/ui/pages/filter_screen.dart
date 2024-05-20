@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:flutter_svg/flutter_svg.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:priority_test/core/constants/color_path.dart';
 import 'package:priority_test/core/enums/view_state.dart';
@@ -12,7 +11,6 @@ import 'package:priority_test/ui/widgets/busy_overlay.dart';
 import 'package:priority_test/ui/widgets/custom_appbar.dart';
 import 'package:priority_test/ui/widgets/custom_slider.dart';
 import 'package:priority_test/ui/widgets/floating_flush_bar.dart';
-import 'package:priority_test/ui/widgets/leading_icon.dart';
 import 'package:priority_test/ui/widgets/listview_items/brand_details_item.dart';
 import 'package:priority_test/ui/widgets/listview_items/filter_color_item.dart';
 import 'package:priority_test/ui/widgets/listview_items/gender_item.dart';
