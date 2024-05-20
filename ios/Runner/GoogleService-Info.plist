@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>API_KEY</key>
+	<string>AIzaSyCo5HTZ4EziiVUtsEDg_yu7HxK1XV88O0s</string>
+	<key>GCM_SENDER_ID</key>
+	<string>871100659122</string>
+	<key>PLIST_VERSION</key>
+	<string>1</string>
+	<key>BUNDLE_ID</key>
+	<string>com.priority.priorityTest</string>
+	<key>PROJECT_ID</key>
+	<string>priority-soft-tech-ac8ef</string>
+	<key>STORAGE_BUCKET</key>
+	<string>priority-soft-tech-ac8ef.appspot.com</string>
+	<key>IS_ADS_ENABLED</key>
+	<false></false>
+	<key>IS_ANALYTICS_ENABLED</key>
+	<false></false>
+	<key>IS_APPINVITE_ENABLED</key>
+	<true></true>
+	<key>IS_GCM_ENABLED</key>
+	<true></true>
+	<key>IS_SIGNIN_ENABLED</key>
+	<true></true>
+	<key>GOOGLE_APP_ID</key>
+	<string>1:871100659122:ios:5ea0ca24e957ea638f20ab</string>
+</dict>
+</plist>
