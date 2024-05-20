@@ -58,4 +58,4 @@ reveals a bottom-sheet for the user to review the product
 
 Feature 3: Order Screen
 
-This is more of an improvement. I added a order screen so that users can see the list of orders created on the app.
+This is more of an improvement. I added a order screen so that users can see the list of orders created on the app. An icon was added at the top of the discover screen which is visible when a user has at least one order.
