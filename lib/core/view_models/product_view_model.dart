@@ -23,7 +23,6 @@ class ProductViewModel extends ProductState{
   List<Product> get filterableProducts => _filterableProducts;
   set filterableProducts(List<Product>  val){
     _filterableProducts = val;
-    print('length after applying filters::::${_filterableProducts.length}>>>');
     notifyListeners();
   }
 
@@ -106,7 +105,7 @@ class ProductViewModel extends ProductState{
         filteredQuery = filteredQuery.where('colors', arrayContains: filterVm.selectedFilterColor);
       }
 
-      // Apply sorting without price filter
+      /// Apply sorting without price filter
       switch (filterVm.selectedSortByOption.toLowerCase()) {
         case 'most recent':
           filteredQuery = filteredQuery.orderBy('createdDate', descending: true);

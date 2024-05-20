@@ -7,7 +7,7 @@ import 'package:priority_test/core/utilities/utilities.dart';
 
 class WishlistViewModel extends WishlistState{
 
-  ///flags ussed on the UI
+  ///flags used on the UI
   bool get isWishlistNotEmpty => _wishListProducts.isNotEmpty;
 
   String? _message;

@@ -142,7 +142,6 @@ class ProductDetailsViewModel extends ChangeNotifier{
   ///called when a user inputs a quantity value in the text-field
   quantityOnChanged(String value){
     if(value.isEmpty){
-      //_quantityController.text = '1';
       _selectedQuantity = 1;
     }else{
       _selectedQuantity = int.tryParse(value) ?? 1;
