@@ -160,6 +160,16 @@ class ProductViewModel extends ProductState{
     notifyListeners();
   }
 
+  ///returns the total number of items available based on brand name
+  int itemCount({required String brandName}){
+    int _count = 0;
+    _allProducts.forEach((product) {
+      if(product.brandName!.toLowerCase() == brandName.toLowerCase())
+        _count++;
+    });
+    return _count;
+  }
+
   ///updates product fields
   updateProductFields({required ProductDetailsViewModel productDetailsViewModel, required String productId})async{
 

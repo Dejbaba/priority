@@ -58,7 +58,7 @@ class OrderSummary extends StatelessWidget {
                       context: context,
                       bgColor: Colors.green,
                       message: "Order Created successfully",
-                      duration: 1,
+                      duration: 2,
                       messageColor: Colors.white,
                     );
                   }

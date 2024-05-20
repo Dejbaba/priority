@@ -116,8 +116,8 @@ class ProductItem extends StatelessWidget {
                                 },
                                 child: SvgPicture.asset(
                                   _isExist ? "assets/icons/wishlist_added.svg":"assets/icons/wishlist_removed.svg",
-                                  width: 20.w,
-                                  height: 20.h,
+                                  width: 18.w,
+                                  height: 18.h,
                                   colorFilter: ColorFilter.mode(
                                     ColorPath.codGrey,
                                     BlendMode.srcIn,

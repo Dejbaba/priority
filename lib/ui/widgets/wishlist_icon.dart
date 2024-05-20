@@ -27,7 +27,7 @@ class WishListIcon extends StatelessWidget {
                 key: Key('cart'),
                 duration: Duration(seconds: 1),
                 child: Padding(
-                  padding: EdgeInsets.only(right: 20.w),
+                  padding: EdgeInsets.only(right: 10.w),
                   child: SvgPicture.asset(
                     "assets/icons/wishlist_added.svg",
                     width: 24.w,
